@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Happy Anniversary</title>
+<style>
+  :root{
+    --bg: #ffd6e8; /* soft pink background */
+    --accent: #ff6fb5; /* pink for headings */
+  }
+  html,body{height:100%;margin:0;font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial;}
+  body{
+    background: var(--bg);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:32px;
+    box-sizing:border-box;
+  }
+
+  .card{
+    width: min(920px, 95vw);
+    max-width: 920px;
+    text-align:center;
+  }
+
+  h1{
+    margin: 0 0 14px 0;
+    font-size: 42px;
+    color: var(--accent);
+    letter-spacing: 1px;
+    text-transform: none;
+    font-weight: 700;
+  }
+
+  .message{
+    margin-top:14px;
+    font-size:20px;
+    color: #a21b57;
+    line-height:1.35;
+  }
+
+  /* container for the heart clip */
+  .heart-wrap{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin: 18px auto 0;
+  }
+
+  /* Use SVG clipPath so we can put any HTML content (video) inside a heart shape */
+  .heart-area{
+    width: 480px;
+    height: 420px;
+    max-width: 90vw;
+    position: relative;
+  }
+
+  /* video fills the heart area */
+  .heart-area video{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+  }
+
+  /* overlay border and glow */
+  .heart-outline{
+    position:absolute;
+    left:0;right:0;top:0;bottom:0;
+    pointer-events:none;
+    filter: drop-shadow(0 12px 24px rgba(162,27,87,0.18));
+  }
+
+  /* make text inside the heart (if needed) */
+  .caption-inside{
+    position:absolute;
+    bottom:14px;
+    left:0;right:0;
+    text-align:center;
+    font-weight:600;
+    font-size:18px;
+    color: white;
+    text-shadow: 0 2px 6px rgba(0,0,0,0.45);
+    pointer-events:none;
+  }
+
+  /* small responsive adjustments */
+  @media (max-width:600px){
+    h1{font-size:32px;}
+    .message{font-size:16px;}
+    .heart-area{height:360px;}
+  }
+</style>
+</head>
+<body>
+<div class="card" role="main" aria-labelledby="title">
+  <h1 id="title">Happy anniversary</h1>
+
+  <div class="heart-wrap">
+    <!-- SVG defines a heart clipPath. The video is placed using foreignObject so it can be clipped to the heart. -->
+    <svg class="heart-area" viewBox="0 0 480 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Heart with your image inside">
+      <defs>
+        <clipPath id="heartClip">
+          <!-- Heart path centered in the viewbox -->
+          <path d="M240 380
+                   C 240 380, 48 272, 48 164
+                   C 48 98, 106 56, 160 96
+                   C 200 126, 240 156, 240 156
+                   C 240 156, 280 126, 320 96
+                   C 374 56, 432 98, 432 164
+                   C 432 272, 240 380, 240 380 z" />
+        </clipPath>
+      </defs>
+
+      <!-- group that will be clipped to the heart path -->
+      <g clip-path="url(#heartClip)">
+        <!-- Use a foreignObject so an HTML5 video element can be placed inside the SVG -->
+        <foreignObject x="0" y="0" width="480" height="420">
+          <div xmlns="http://www.w3.org/1999/xhtml" style="width:100%;height:100%;background:linear-gradient(180deg,#ffd6e8,#ffebf6);display:flex;align-items:center;justify-content:center;overflow:hidden;">
+            <!-- The video element points to the MOV file saved alongside this HTML (ILGZ1221.MOV).
+                 It will autoplay, loop, and be muted so it can play automatically in most browsers. -->
+            <video src="ILGZ1221.MOV" autoplay muted loop playsinline controls style="width:100%;height:100%;object-fit:cover;border-radius:0;"></video>
+          </div>
+        </foreignObject>
+      </g>
+
+      <!-- decorative stroke of the heart for a soft border/glow -->
+      <path class="heart-outline" d="M240 380
+                   C 240 380, 48 272, 48 164
+                   C 48 98, 106 56, 160 96
+                   C 200 126, 240 156, 240 156
+                   C 240 156, 280 126, 320 96
+                   C 374 56, 432 98, 432 164
+                   C 432 272, 240 380, 240 380 z"
+            fill="none" stroke="#ff9acb" stroke-width="8" stroke-linejoin="round" opacity="0.95"/>
+    </svg>
+  </div>
+
+  <div class="message">
+    <p>I love you &amp; I can't to spend of my life with you. You're amazing baby!</p>
+  </div>
+</div>
+</body>
+</html>
